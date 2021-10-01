@@ -67,7 +67,7 @@ class _NewTransactionState extends State<NewTransaction> {
               right: 10,
               bottom: MediaQuery.of(context).viewInsets.bottom + 10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               TextField(
                 decoration: InputDecoration(labelText: 'Title'),
@@ -111,10 +111,10 @@ class _NewTransactionState extends State<NewTransaction> {
                   ],
                 ),
               ),
-              RaisedButton(
+              CupertinoButton(
                 child: Text('Add Transaction'),
                 color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
+                // color: Colors.white,
                 onPressed: _submitData,
               ),
             ],
