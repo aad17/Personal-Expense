@@ -19,24 +19,27 @@ void main() => {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Personal Expenses',
-      theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
-          errorColor: Colors.red,
-          fontFamily: 'Quicksand',
-          textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
-                  fontFamily: 'Quicksand',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18)),
-          appBarTheme: AppBarTheme(
-              textTheme: ThemeData.light().textTheme.copyWith(
-                  headline6: TextStyle(
-                      fontFamily: 'OpenSans', fontWeight: FontWeight.bold)))),
-      home: MyHomePage(),
-    );
+    return Platform.isIOS
+        ? CupertinoApp()
+        : MaterialApp(
+            title: 'Personal Expenses',
+            theme: ThemeData(
+                primarySwatch: Colors.purple,
+                accentColor: Colors.amber,
+                errorColor: Colors.red,
+                fontFamily: 'Quicksand',
+                textTheme: ThemeData.light().textTheme.copyWith(
+                    headline6: TextStyle(
+                        fontFamily: 'Quicksand',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18)),
+                appBarTheme: AppBarTheme(
+                    textTheme: ThemeData.light().textTheme.copyWith(
+                        headline6: TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontWeight: FontWeight.bold)))),
+            home: MyHomePage(),
+          );
   }
 }
 
@@ -154,7 +157,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Show Chart'),
+                  Text(
+                    'Show Chart',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                   Switch.adaptive(
                       activeColor: Theme.of(context).accentColor,
                       value: _showChart,
